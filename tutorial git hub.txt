@@ -1,0 +1,22 @@
+Tutorial github
+
+git init 
+
+git clone usuário@servidor:/caminho/para/o/repositório
+
+git clone https://github.com/AndreLuizGarcia/RepositorioEngDeSoftware
+
+
+git add <file>
+git commit -m "comentario"
+
+git status
+git push
+git pull
+
+git push origin master -> Para enviar estas alterações ao seu repositório remoto, execute 
+
+git push -> sobe as atualizacoes pro servidor
+git pull -> descarrega as atualizações do servidor
+
+git remote add origin <servidor>
