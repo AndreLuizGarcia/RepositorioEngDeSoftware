@@ -84,22 +84,32 @@ public class PesquisadorDAO {
 	}
 
 	public void deletePesquisador(String nome) throws SQLException {
-		String id = "Select idlogin FROM pesquisador WHERE nome = ?";
-		ps = BancoDeDados.getInstance().getConnection().prepareStatement(id);
+		String sql = "Select idlogin FROM pesquisador WHERE nome = ?";
+		ps = BancoDeDados.getInstance().getConnection().prepareStatement(sql);
 		ps.setString(1, nome);
-		ps.executeQuery();
+		resultSet = ps.executeQuery();
+		
+		System.out.println(nome);
+		
+		int id = 0;
+		
+		while(resultSet.next()){
+			id = resultSet.getInt("idLogin");
+			System.out.println("id = " + id);
+		}
+		
+		String b = "DELETE FROM pesquisador WHERE nome = ?";
+		ps = BancoDeDados.getInstance().getConnection().prepareStatement(b);
+		ps.setString(1, nome);
+		ps.executeUpdate();
 			
-		String sql = "DELETE FROM loginuser WHERE idLogin = ?";
+		sql = "DELETE FROM loginuser WHERE idLogin = ?";
 		ps = BancoDeDados.getInstance().getConnection().prepareStatement(sql);
-		ps.setString(1, id);
-		ps.executeUpdate();
-		
-		sql = "DELETE FROM pesquisador WHERE nome = ?";
-		ps = BancoDeDados.getInstance().getConnection().prepareStatement(sql);
-		ps.setString(1, nome);
-		ps.executeUpdate();
+		ps.setInt(1, id);
 		
 		
+		
+		ps.executeUpdate();		
 	}
 
 	public DefaultListModel<String> getAllPesquisador() { // para listar usuarios

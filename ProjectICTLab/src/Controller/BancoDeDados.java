@@ -27,7 +27,7 @@ public class BancoDeDados {
 	}
 
 	public void conectar() {
-		String servidor = "jdbc:mysql://localhost:3306/ictlab?characterEncoding=UTF-8&useSSL=false";
+		String servidor = "jdbc:mysql://localhost:3306/ict?characterEncoding=UTF-8&useSSL=false";
 		String usuario = "root";
 		String senha = "root";
 

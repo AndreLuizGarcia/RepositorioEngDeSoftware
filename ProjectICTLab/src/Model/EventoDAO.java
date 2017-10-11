@@ -76,7 +76,7 @@ public class EventoDAO {
 			id = resultSet.getString("idPesquisador");
 		}
 		
-		sql = "UPDATE equipamento SET nome = ?, dataEvento = ?, localEvento = ?, idResponsavel = ? WHERE nome = ?";
+		sql = "UPDATE eventos SET nome = ?, dataEvento = ?, localEvento = ?, idResponsavel = ? WHERE nome = ?";
 		ps = BancoDeDados.getInstance().getConnection().prepareStatement(sql);
 		ps.setString(1, evento.getNome());
 		ps.setString(2, evento.getData());
@@ -87,7 +87,7 @@ public class EventoDAO {
 	}
 
 	public void deleteEvento(String nome) throws SQLException {
-		String sql = "DELETE FROM evento WHERE nome = ?";
+		String sql = "DELETE FROM eventos WHERE nome = ?";
 		ps = BancoDeDados.getInstance().getConnection().prepareStatement(sql);
 		ps.setString(1, nome);
 		ps.executeUpdate();
@@ -97,7 +97,7 @@ public class EventoDAO {
 		DefaultListModel<String> model = null;
 		try {
 			model = new DefaultListModel<String>();
-			String sql = "SELECT nome, dataEvento, localEvento FROM evento";
+			String sql = "SELECT nome, dataEvento, localEvento FROM eventos";
 			ps = BancoDeDados.getInstance().getConnection().prepareStatement(sql);
 			resultSet = ps.executeQuery();
 			while (resultSet.next()) {
@@ -113,7 +113,7 @@ public class EventoDAO {
 	public Evento getEvento(String nome) {
 		Evento e = null;
 		try {
-			String sql = "SELECT nome, dataEvento, localEvento FROM evento where nome = ?";
+			String sql = "SELECT nome, dataEvento, localEvento FROM eventos where nome = ?";
 			ps = BancoDeDados.getInstance().getConnection().prepareStatement(sql);
 			ps.setString(1, nome);
 			resultSet = ps.executeQuery();
@@ -134,7 +134,7 @@ public class EventoDAO {
 
 		if (BancoDeDados.getInstance().estaConectado()) {
 			try {
-				String query = "SELECT nome FROM evento";
+				String query = "SELECT nome FROM eventos";
 				ps = BancoDeDados.getInstance().getConnection().prepareStatement(query);
 				resultSet = ps.executeQuery();
 				while (resultSet.next()) {
@@ -151,7 +151,7 @@ public class EventoDAO {
 		ArrayList<Evento> array = null;
 		try {
 			array = new ArrayList<Evento>();
-			String query = "SELECT nome, dataEvento, localEvento FROM evento";
+			String query = "SELECT nome, dataEvento, localEvento FROM eventos";
 			ps = BancoDeDados.getInstance().getConnection().prepareStatement(query);
 			resultSet = ps.executeQuery();
 			while (resultSet.next()) {

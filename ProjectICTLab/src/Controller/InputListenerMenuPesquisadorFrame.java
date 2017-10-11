@@ -26,13 +26,7 @@ public class InputListenerMenuPesquisadorFrame implements ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		
-		System.out.println("entrooou");
-		
-		System.out.println(e.getActionCommand());
-		
-		
+	public void actionPerformed(ActionEvent e) {				
 		if(e.getActionCommand().equals("Voltar")){
 			int i = JOptionPane.showConfirmDialog(null ,"Deseja voltar a tela de login?", 
 					 "Saída",JOptionPane.YES_NO_OPTION);

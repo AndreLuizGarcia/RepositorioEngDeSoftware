@@ -45,7 +45,7 @@ public class EquipamentoDAO {
 		if (BancoDeDados.getInstance().estaConectado()) {
 			String sql;
 			
-			sql = "INSERT INTO equipamento (nome,descrição,tombo) VALUES (?,?,?)";
+			sql = "INSERT INTO equipamento (nomeEquipamento,descricao,tombo) VALUES (?,?,?)";
 			ps = BancoDeDados.getInstance().getConnection().prepareStatement(sql);
 			ps.setString(1, equipamento.getNome());
 			ps.setString(2, equipamento.getDescricao());
@@ -57,7 +57,7 @@ public class EquipamentoDAO {
 	public void editarEquipamento(Equipamento equipamento, Equipamento e) throws SQLException {
 		String sql;
 		
-		sql = "UPDATE equipamento SET nome = ?, descrição = ?, tombo = ? WHERE nome = ?";
+		sql = "UPDATE equipamento SET nomeEquipamento = ?, descricao = ?, tombo = ? WHERE nomeEquipamento = ?";
 		ps = BancoDeDados.getInstance().getConnection().prepareStatement(sql);
 		ps.setString(1, equipamento.getNome());
 		ps.setString(2, equipamento.getDescricao());
@@ -67,7 +67,7 @@ public class EquipamentoDAO {
 	}
 
 	public void deleteEquipamento(String nome) throws SQLException {
-		String sql = "DELETE FROM equipamento WHERE nome = ?";
+		String sql = "DELETE FROM equipamento WHERE nomeEquipamento = ?";
 		ps = BancoDeDados.getInstance().getConnection().prepareStatement(sql);
 		ps.setString(1, nome);
 		ps.executeUpdate();
@@ -77,11 +77,11 @@ public class EquipamentoDAO {
 		DefaultListModel<String> model = null;
 		try {
 			model = new DefaultListModel<String>();
-			String sql = "SELECT nome, descricao, tombo FROM equipamento";
+			String sql = "SELECT nomeEquipamento, descricao, tombo FROM equipamento";
 			ps = BancoDeDados.getInstance().getConnection().prepareStatement(sql);
 			resultSet = ps.executeQuery();
 			while (resultSet.next()) {
-				model.addElement(resultSet.getString("nome") + " " + resultSet.getString("descricao")
+				model.addElement(resultSet.getString("nomeEquipamento") + " " + resultSet.getString("descricao")
 						+ " " + resultSet.getString("tombo"));
 			}
 		} catch (SQLException e) {
@@ -93,14 +93,14 @@ public class EquipamentoDAO {
 	public Equipamento getEquipamento(String nome) {
 		Equipamento e = null;
 		try {
-			String sql = "SELECT nome, descricao,tombo FROM equipamento where nome = ?";
+			String sql = "SELECT nomeEquipamento, descricao,tombo FROM equipamento where nomeEquipamento = ?";
 			ps = BancoDeDados.getInstance().getConnection().prepareStatement(sql);
 			ps.setString(1, nome);
 			resultSet = ps.executeQuery();
 
 			while (resultSet.next()) {
 				e = new Equipamento();
-				e.setNome(resultSet.getString("nome"));
+				e.setNome(resultSet.getString("nomeEquipamento"));
 				e.setDescricao(resultSet.getString("descricao"));
 				e.setTombo(resultSet.getString("tombo"));
 			}
@@ -114,7 +114,7 @@ public class EquipamentoDAO {
 
 		if (BancoDeDados.getInstance().estaConectado()) {
 			try {
-				String query = "SELECT nome FROM equipamento";
+				String query = "SELECT nomeEquipamento FROM equipamento";
 				ps = BancoDeDados.getInstance().getConnection().prepareStatement(query);
 				resultSet = ps.executeQuery();
 				while (resultSet.next()) {
@@ -131,12 +131,12 @@ public class EquipamentoDAO {
 		ArrayList<Equipamento> array = null;
 		try {
 			array = new ArrayList<Equipamento>();
-			String query = "SELECT nome, descricao, tombo FROM equipamento";
+			String query = "SELECT nomeEquipamento, descricao, tombo FROM equipamento";
 			ps = BancoDeDados.getInstance().getConnection().prepareStatement(query);
 			resultSet = ps.executeQuery();
 			while (resultSet.next()) {
 				Equipamento e = new Equipamento();
-				e.setNome(resultSet.getString("nome"));
+				e.setNome(resultSet.getString("nomeEquipamento"));
 				e.setDescricao(resultSet.getString("descricao"));
 				e.setTombo(resultSet.getString("tombo"));
 

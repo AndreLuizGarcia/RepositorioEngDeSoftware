@@ -9,7 +9,6 @@ import javax.swing.JOptionPane;
 import Model.Evento;
 import Model.EventoDAO;
 import View.EditarEventoFrame;
-import View.MenuAdminFrame;
 import View.MenuPesquisadorFrame;
 
 public class InputListenerEditarEventoFrame implements ActionListener {
@@ -58,7 +57,7 @@ public class InputListenerEditarEventoFrame implements ActionListener {
 					EventoDAO.getInstance().editarEvento(evento, event);
 					JOptionPane.showMessageDialog(null, "Atualizado com Sucesso!");
 					editarEvento.dispose();
-					new MenuAdminFrame().setVisible(true);
+					new MenuPesquisadorFrame().setVisible(true);
 				} catch (SQLException r) {
 					JOptionPane.showMessageDialog(null, r.getMessage());
 				}

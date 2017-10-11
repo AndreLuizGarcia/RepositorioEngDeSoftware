@@ -1,19 +1,22 @@
 package View;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
+import Controller.BancoDeDados;
+import Controller.InputListenerListarEventoFrame;
 import Imagens.JBackground;
-import javax.swing.JLabel;
-import java.awt.Font;
+import Model.EventoDAO;
 
 public class ListarEventosFrame extends JFrame {
 
@@ -24,7 +27,7 @@ public class ListarEventosFrame extends JFrame {
 	private JButton btnVoltar;
 	private JPanel contentPane_1;
 	private JList<String> list;
-	//private InputListenerListarAmigosMarioFrame listenerAmigos;
+	private InputListenerListarEventoFrame listenerEventos;
 	private JPanel listPanel;
 	private JScrollPane scrollPane;
 	private JLabel lblListarPesquisador;
@@ -32,8 +35,8 @@ public class ListarEventosFrame extends JFrame {
 	public ListarEventosFrame() {
 		setTitle("Listar Evento");
 		initialize();
-//		listenerAmigos = new InputListenerListarAmigosMarioFrame(this, BancoDeDados.getInstance());
-//		inicializarListeners();
+		listenerEventos = new InputListenerListarEventoFrame(this, BancoDeDados.getInstance());
+		inicializarListeners();
 	}
 	private JButton getBtnEditar() {
 		if (btnEditar == null) {
@@ -74,14 +77,14 @@ public class ListarEventosFrame extends JFrame {
 			//DefaultListModel<String> model = new DefaultListModel<String>();
 //			model.addElement("YOSHI");
 //			model.addElement("LUIGI");
-		//	list = new JList<String>(AmigoDAO.getInstance().getAllAmigos());
+			list = new JList<String>(EventoDAO.getInstance().getAllEvento());
 			list.setBounds(71, 82, 285, 150);
 		}
 		return list;
 	}
 	
 	public void refreshList(){
-		//list.setModel(AmigoDAO.getInstance().getAllAmigos());
+		list.setModel(EventoDAO.getInstance().getAllEvento());
 	}
 	
 	private JPanel getListPanel() {
@@ -102,12 +105,12 @@ public class ListarEventosFrame extends JFrame {
 		return scrollPane;
 	}
 	
-//	private void inicializarListeners(){
-//		getBtnEditar().addActionListener(listenerAmigos);
-//		getBtnGerarRelatrio().addActionListener(listenerAmigos);
-//		getBtnRemover().addActionListener(listenerAmigos);
-//		getBtnVoltar().addActionListener(listenerAmigos);
-//	}
+	private void inicializarListeners(){
+		getBtnEditar().addActionListener(listenerEventos);
+		getBtnGerarRelatrio().addActionListener(listenerEventos);
+		getBtnRemover().addActionListener(listenerEventos);
+		getBtnVoltar().addActionListener(listenerEventos);
+	}
 	private void initialize() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
