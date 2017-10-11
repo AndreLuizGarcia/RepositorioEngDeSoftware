@@ -19,6 +19,6 @@ public class Runner {
 			}
 			BemVindoFrame bvf = new BemVindoFrame();
 			bvf.setVisible(true);
-		}else JOptionPane.showMessageDialog(null, "Banco de Dados desconctao!");		
+		}else JOptionPane.showMessageDialog(null, "Banco de Dados Desconectado!");		
 	}
 }			
