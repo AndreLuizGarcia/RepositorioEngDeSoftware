@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.12, for Win32 (AMD64)
 --
--- Host: localhost    Database: ictlab
+-- Host: localhost    Database: ict
 -- ------------------------------------------------------
 -- Server version	5.7.17-log
 
@@ -30,7 +30,7 @@ CREATE TABLE `departamento` (
   PRIMARY KEY (`idDepartamento`),
   KEY `idResponsavel` (`idResponsavel`),
   CONSTRAINT `departamento_ibfk_1` FOREIGN KEY (`idResponsavel`) REFERENCES `pesquisador` (`idPesquisador`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,6 +39,7 @@ CREATE TABLE `departamento` (
 
 LOCK TABLES `departamento` WRITE;
 /*!40000 ALTER TABLE `departamento` DISABLE KEYS */;
+INSERT INTO `departamento` VALUES (2,'a','a',2);
 /*!40000 ALTER TABLE `departamento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -51,11 +52,11 @@ DROP TABLE IF EXISTS `equipamento`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `equipamento` (
   `idEquipamento` int(11) NOT NULL AUTO_INCREMENT,
+  `nomeEquipamento` varchar(20) DEFAULT NULL,
   `descricao` varchar(20) DEFAULT NULL,
   `tombo` varchar(40) DEFAULT NULL,
-  `nome` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idEquipamento`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -79,7 +80,7 @@ CREATE TABLE `estalogado` (
   `nome` varchar(45) NOT NULL,
   PRIMARY KEY (`idEstaLogado`),
   UNIQUE KEY `nome` (`nome`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -88,7 +89,6 @@ CREATE TABLE `estalogado` (
 
 LOCK TABLES `estalogado` WRITE;
 /*!40000 ALTER TABLE `estalogado` DISABLE KEYS */;
-INSERT INTO `estalogado` VALUES (20,'a');
 /*!40000 ALTER TABLE `estalogado` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -108,7 +108,7 @@ CREATE TABLE `eventos` (
   PRIMARY KEY (`idEvento`),
   KEY `idResponsavel` (`idResponsavel`),
   CONSTRAINT `eventos_ibfk_1` FOREIGN KEY (`idResponsavel`) REFERENCES `pesquisador` (`idPesquisador`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -117,6 +117,7 @@ CREATE TABLE `eventos` (
 
 LOCK TABLES `eventos` WRITE;
 /*!40000 ALTER TABLE `eventos` DISABLE KEYS */;
+INSERT INTO `eventos` VALUES (2,'a','1','a',2),(3,'aa','2','a',2);
 /*!40000 ALTER TABLE `eventos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -132,7 +133,7 @@ CREATE TABLE `loginuser` (
   `login` varchar(20) DEFAULT NULL,
   `senha` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`idLogin`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -141,7 +142,7 @@ CREATE TABLE `loginuser` (
 
 LOCK TABLES `loginuser` WRITE;
 /*!40000 ALTER TABLE `loginuser` DISABLE KEYS */;
-INSERT INTO `loginuser` VALUES (24,'a','a'),(25,'b','a');
+INSERT INTO `loginuser` VALUES (12,'a','a');
 /*!40000 ALTER TABLE `loginuser` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -154,14 +155,16 @@ DROP TABLE IF EXISTS `pesquisador`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pesquisador` (
   `idPesquisador` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(20) DEFAULT NULL,
-  `email` varchar(50) DEFAULT NULL,
-  `biografia` varchar(500) DEFAULT NULL,
-  `lattes` varchar(100) DEFAULT NULL,
-  `linkedin` varchar(100) DEFAULT NULL,
-  `idlogin` varchar(45) NOT NULL,
-  PRIMARY KEY (`idPesquisador`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+  `nome` varchar(20) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `biografia` varchar(500) NOT NULL,
+  `lattes` varchar(100) NOT NULL,
+  `linkedin` varchar(100) NOT NULL,
+  `idLogin` int(11) NOT NULL,
+  PRIMARY KEY (`idPesquisador`),
+  KEY `idLogin` (`idLogin`),
+  CONSTRAINT `pesquisador_ibfk_1` FOREIGN KEY (`idLogin`) REFERENCES `loginuser` (`idLogin`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -170,7 +173,7 @@ CREATE TABLE `pesquisador` (
 
 LOCK TABLES `pesquisador` WRITE;
 /*!40000 ALTER TABLE `pesquisador` DISABLE KEYS */;
-INSERT INTO `pesquisador` VALUES (20,'b','a','a','a','a','24');
+INSERT INTO `pesquisador` VALUES (2,'a','a','a','a','a',12);
 /*!40000 ALTER TABLE `pesquisador` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -227,7 +230,7 @@ LOCK TABLES `projeto` WRITE;
 UNLOCK TABLES;
 
 --
--- Dumping events for database 'ictlab'
+-- Dumping events for database 'ict'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -239,4 +242,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-09-14 23:25:06
+-- Dump completed on 2017-10-10 22:04:19
