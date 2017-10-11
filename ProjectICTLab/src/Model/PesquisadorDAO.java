@@ -221,11 +221,11 @@ public class PesquisadorDAO {
 		return false;
 	}
 
-	public ArrayList<Pesquisador> getPDFAllUsuarios() {
+	public ArrayList<Pesquisador> getPDFAllPesquisadores() {
 		ArrayList<Pesquisador> array = null;
 		try {
 			array = new ArrayList<Pesquisador>();
-			String query = "select nome,email,biografia,lattes,linkedin from usuario";
+			String query = "select nome,email,biografia,lattes,linkedin from pesquisador";
 			ps = BancoDeDados.getInstance().getConnection().prepareStatement(query);
 			resultSet = ps.executeQuery();
 			while (resultSet.next()) {

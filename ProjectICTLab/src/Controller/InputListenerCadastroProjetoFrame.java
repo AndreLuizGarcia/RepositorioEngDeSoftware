@@ -33,7 +33,7 @@ public class InputListenerCadastroProjetoFrame implements ActionListener {
 				JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
 			} else if (ProjetoDAO.getInstance().isValidString(cadastroProjeto.getNomeField().getText())
 					||ProjetoDAO.getInstance().isValidString(cadastroProjeto.getStatusField().getText())) {
-				JOptionPane.showMessageDialog(null, "Insira apenas letras no campo Nome e Status do Projeto e apenas números no campo tombo!", "Erro!",
+				JOptionPane.showMessageDialog(null, "Insira apenas letras no campo Nome e Status do Projeto !", "Erro!",
 						JOptionPane.ERROR_MESSAGE);
 				JOptionPane.showMessageDialog(null, "Dica: Nessa fase de implementação, não aceitamos "
 						+ "espaços entre as palavras. \nVocê pode fazer a separação das palavras juntando as e "

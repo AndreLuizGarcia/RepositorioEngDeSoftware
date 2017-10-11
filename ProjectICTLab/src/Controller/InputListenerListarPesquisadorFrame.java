@@ -65,7 +65,7 @@ public class InputListenerListarPesquisadorFrame implements ActionListener {
 				String path = String.valueOf(fileChooser.getSelectedFile());
 				GerarPDF gerarPDF = new GerarPDF(banco, path);
 				try {
-					gerarPDF.gerarRelatorioPoder();
+					gerarPDF.gerarRelatorioPesquisador();
 				} catch (IOException | DocumentException e1) {
 					e1.printStackTrace();
 				}

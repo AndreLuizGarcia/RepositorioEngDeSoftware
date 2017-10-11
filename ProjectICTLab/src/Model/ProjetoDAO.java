@@ -38,7 +38,7 @@ public class ProjetoDAO {
 		if (BancoDeDados.getInstance().estaConectado()) {	
 
 			String sql;
-			sql = "INSERT INTO projeto (nome,statusprojeto) VALUES (?,?)";
+			sql = "INSERT INTO projeto (nome,statusdoprojeto) VALUES (?,?)";
 			ps = BancoDeDados.getInstance().getConnection().prepareStatement(sql);
 			ps.setString(1, projeto.getNome());
 			ps.setString(2, projeto.getStatusDoProjeto());
@@ -47,7 +47,7 @@ public class ProjetoDAO {
 	}
 
 	public void editarProjeto(Projeto projeto, Projeto p) throws SQLException {
-		String sql = "UPDATE projeto SET nome = ?, statusprojeto = ? WHERE nome = ?";
+		String sql = "UPDATE projeto SET nome = ?, statusdoprojeto = ? WHERE nome = ?";
 		ps = BancoDeDados.getInstance().getConnection().prepareStatement(sql);
 		ps.setString(1, projeto.getNome());
 		ps.setString(2, projeto.getStatusDoProjeto());
@@ -89,7 +89,7 @@ public class ProjetoDAO {
 			while (resultSet.next()) {
 				p = new Projeto();
 				p.setNome(resultSet.getString("Nome"));
-				p.setStatusDoProjeto(resultSet.getString("statusprojeto"));
+				p.setStatusDoProjeto(resultSet.getString("statusdoprojeto"));
 			}
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage()+"fffffff");
