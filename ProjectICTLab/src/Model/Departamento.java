@@ -24,8 +24,5 @@ public class Departamento {
 	public void setResponsavel(String responsavel) {
 		this.responsavel = responsavel;
 	}
-	
-	
-	
 
 }

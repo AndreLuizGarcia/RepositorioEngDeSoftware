@@ -35,16 +35,14 @@ public class InputListenerCadastroProjetoFrame implements ActionListener {
 					||ProjetoDAO.getInstance().isValidString(cadastroProjeto.getStatusField().getText())) {
 				JOptionPane.showMessageDialog(null, "Insira apenas letras no campo Nome e Status do Projeto !", "Erro!",
 						JOptionPane.ERROR_MESSAGE);
-				JOptionPane.showMessageDialog(null, "Dica: Nessa fase de implementação, não aceitamos "
-						+ "espaços entre as palavras. \nVocê pode fazer a separação das palavras juntando as e "
-						+ "sempre colocando \na proxima com inicial maiscula: Casa Amarela ->CasaAmarela.");
 			} else {
 
 				Projeto projeto = new Projeto();
 				
 				projeto.setNome(cadastroProjeto.getNomeField().getText());
 				projeto.setStatusDoProjeto(cadastroProjeto.getStatusField().getText());
-
+				projeto.setPesquisadores(cadastroProjeto.getList().getSelectedValuesList());				
+				
 				try {
 					ProjetoDAO.getInstance().cadProjeto(projeto);
 					JOptionPane.showMessageDialog(null, "Cadastrado com Sucesso!");

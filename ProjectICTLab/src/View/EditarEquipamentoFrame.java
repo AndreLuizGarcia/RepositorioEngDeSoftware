@@ -34,6 +34,7 @@ public class EditarEquipamentoFrame extends JFrame {
     private Equipamento e;
 
 	public EditarEquipamentoFrame(Equipamento equip) {
+		this.e = equip;
 		setTitle("Editar Equipamento");
 		initialize();
 		listenerEditarEquipamento = new InputListenerEditarEquipamentoFrame(this,e);
@@ -91,6 +92,7 @@ public class EditarEquipamentoFrame extends JFrame {
 	private JLabel getLblCadastroPesquisador() {
 		if (lblCadastroPesquisador == null) {
 			lblCadastroPesquisador = new JLabel("Editar Equipamento");
+			lblCadastroPesquisador.setForeground(Color.WHITE);
 			lblCadastroPesquisador.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			lblCadastroPesquisador.setBounds(132, 23, 227, 39);
 		}
@@ -99,6 +101,7 @@ public class EditarEquipamentoFrame extends JFrame {
 	private JLabel getLblNome() {
 		if (lblNome == null) {
 			lblNome = new JLabel("Nome:");
+			lblNome.setForeground(Color.WHITE);
 			lblNome.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblNome.setBounds(77, 84, 74, 33);
 		}
@@ -107,6 +110,7 @@ public class EditarEquipamentoFrame extends JFrame {
 	private JLabel getLblEmail() {
 		if (lblEmail == null) {
 			lblEmail = new JLabel("Tombo:");
+			lblEmail.setForeground(Color.WHITE);
 			lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblEmail.setBounds(77, 111, 103, 33);
 		}
@@ -115,6 +119,7 @@ public class EditarEquipamentoFrame extends JFrame {
 	private JLabel getLblBiografia() {
 		if (lblBiografia == null) {
 			lblBiografia = new JLabel("Descri\u00E7\u00E3o:");
+			lblBiografia.setForeground(Color.WHITE);
 			lblBiografia.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblBiografia.setBounds(77, 136, 74, 33);
 		}

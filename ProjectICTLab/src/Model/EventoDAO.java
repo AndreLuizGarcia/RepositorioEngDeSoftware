@@ -25,8 +25,8 @@ public class EventoDAO {
 	private static ResultSet resultSet = null;
 
 	public boolean isValidString(String nome) {
-		// String pattern = "[a-zA-Z ]+";
-		String pattern = "^[a-zA-Z¡¬√¿«… Õ”‘’⁄‹·‚„‡ÁÈÍÌÛÙı˙¸]*$";// nao posso colocar espaco pq na hora de editar eu faco split e 
+		String pattern = "[a-zA-Z ]+";
+		//String pattern = "^[a-zA-Z¡¬√¿«… Õ”‘’⁄‹·‚„‡ÁÈÍÌÛÙı˙¸]*$";// nao posso colocar espaco pq na hora de editar eu faco split e 
 																 // com os espacos da problema															
 		if (nome.matches(pattern)) {
 			return false; // se sÛ tiver letra retorna falso e nao entra no if do input					
@@ -34,9 +34,9 @@ public class EventoDAO {
 			return true;
 	}
 	
-	public boolean isValidInt(String tombo) {
-        String pattern = "^[0-9]*$";
-        if(tombo.matches(pattern)){
+	public boolean isValidDate(String date) {
+        String pattern = "\\d{2}/\\d{2}/\\d{4}";
+        if(date.matches(pattern)){
         	return false;   //se sÛ tiver numero retorna falso e nao entra no if do input
         } else return true;
     }
@@ -93,16 +93,18 @@ public class EventoDAO {
 		ps.executeUpdate();
 	}
 	
-	public DefaultListModel<String> getAllEvento() { // para listar departamentos
+	public DefaultListModel<String> getAllEvento() { // para listar eventos
 		DefaultListModel<String> model = null;
 		try {
 			model = new DefaultListModel<String>();
-			String sql = "SELECT nome, dataEvento, localEvento FROM eventos";
+			String sql = "SELECT eventos.nome, dataEvento, localEvento, pesquisador.nome as responsavel FROM eventos,pesquisador where idResponsavel = idPesquisador;";
 			ps = BancoDeDados.getInstance().getConnection().prepareStatement(sql);
 			resultSet = ps.executeQuery();
+			
 			while (resultSet.next()) {
-				model.addElement(resultSet.getString("nome") + " " + resultSet.getString("dataEvento")
-						+ " " + resultSet.getString("localEvento"));
+				model.addElement(resultSet.getString("nome") + " -- " + resultSet.getString("dataEvento")
+						+ " -- " + resultSet.getString("localEvento") + " -- " + resultSet.getString("responsavel"));
+				System.out.println("result set nome == " + resultSet.getString("nome") );
 			}
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage());
@@ -113,7 +115,7 @@ public class EventoDAO {
 	public Evento getEvento(String nome) {
 		Evento e = null;
 		try {
-			String sql = "SELECT nome, dataEvento, localEvento FROM eventos where nome = ?";
+			String sql = "SELECT eventos.nome, dataEvento, localEvento, pesquisador.nome as responsavel FROM eventos, pesquisador where eventos.nome = ? and idResponsavel = idPesquisador;";
 			ps = BancoDeDados.getInstance().getConnection().prepareStatement(sql);
 			ps.setString(1, nome);
 			resultSet = ps.executeQuery();
@@ -123,6 +125,7 @@ public class EventoDAO {
 				e.setNome(resultSet.getString("nome"));
 				e.setData(resultSet.getString("dataEvento"));
 				e.setLocal(resultSet.getString("localEvento"));
+				e.setResponsavel(resultSet.getString("responsavel"));
 			}
 		} catch (SQLException f) {
 			JOptionPane.showMessageDialog(null, f.getMessage());
@@ -151,7 +154,7 @@ public class EventoDAO {
 		ArrayList<Evento> array = null;
 		try {
 			array = new ArrayList<Evento>();
-			String query = "SELECT nome, dataEvento, localEvento FROM eventos";
+			String query = "SELECT eventos.nome, dataEvento, localEvento, pesquisador.nome as responsavel FROM eventos,pesquisador where idResponsavel = idPesquisador;";
 			ps = BancoDeDados.getInstance().getConnection().prepareStatement(query);
 			resultSet = ps.executeQuery();
 			while (resultSet.next()) {
@@ -159,6 +162,7 @@ public class EventoDAO {
 				e.setNome(resultSet.getString("nome"));
 				e.setData(resultSet.getString("dataEvento"));
 				e.setLocal(resultSet.getString("localEvento"));
+				e.setResponsavel(resultSet.getString("responsavel"));
 
 				array.add(e);
 			}

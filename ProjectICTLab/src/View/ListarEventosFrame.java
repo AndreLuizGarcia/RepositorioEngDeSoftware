@@ -17,6 +17,7 @@ import Controller.BancoDeDados;
 import Controller.InputListenerListarEventoFrame;
 import Imagens.JBackground;
 import Model.EventoDAO;
+import java.awt.Color;
 
 public class ListarEventosFrame extends JFrame {
 
@@ -74,9 +75,6 @@ public class ListarEventosFrame extends JFrame {
 	}
 	public JList<String> getList() {
 		if (list == null) {
-			//DefaultListModel<String> model = new DefaultListModel<String>();
-//			model.addElement("YOSHI");
-//			model.addElement("LUIGI");
 			list = new JList<String>(EventoDAO.getInstance().getAllEvento());
 			list.setBounds(71, 82, 285, 150);
 		}
@@ -132,6 +130,7 @@ public class ListarEventosFrame extends JFrame {
 	private JLabel getLblListarPesquisador() {
 		if (lblListarPesquisador == null) {
 			lblListarPesquisador = new JLabel("Listar Evento");
+			lblListarPesquisador.setForeground(Color.WHITE);
 			lblListarPesquisador.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			lblListarPesquisador.setBounds(134, 22, 201, 39);
 		}

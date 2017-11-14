@@ -44,18 +44,16 @@ public class InputListenerCadastroPesquisadorFrame implements ActionListener {
 					|| cadastroPesquisador.getPasswordField().getText().equals(""))					
 			{
 				JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
-			}  else if (PesquisadorDAO.getInstance().isValidString(cadastroPesquisador.getNomeField().getText())
-					|| PesquisadorDAO.getInstance().isValidString(cadastroPesquisador.getEmailField().getText())
-					|| PesquisadorDAO.getInstance().isValidString(cadastroPesquisador.getBiografiaField().getText())
-					|| PesquisadorDAO.getInstance().isValidString(cadastroPesquisador.getLattesField().getText())
-					|| PesquisadorDAO.getInstance().isValidString(cadastroPesquisador.getLinkedinField().getText())) {
-				JOptionPane.showMessageDialog(null, "Insira apenas letras no campo Nome, email, biografia, lattes, linkedin", "Erro!",
-						JOptionPane.ERROR_MESSAGE);
-				JOptionPane.showMessageDialog(null, "Dica: Nessa fase de implementação, não aceitamos espaços entre as palavras. \nVocê pode fazer a separação das palavras juntando as e sempre colocando \na proxima com inicial maiscula: Casa Amarela ->CasaAmarela.");
-			} else if (PesquisadorDAO.getInstance().existeLoginCadastro(cadastroPesquisador.getLoginField().getText(),cadastroPesquisador.getNomeField().getText()))
-				{
-				JOptionPane.showMessageDialog(null, "Este Login/Nome já exite, escolha outro!!", "Erro!",
-						JOptionPane.ERROR_MESSAGE);
+			}  else if (PesquisadorDAO.getInstance().isValidString(cadastroPesquisador.getNomeField().getText())){
+				JOptionPane.showMessageDialog(null, "Insira apenas letras no campo Nome", "Erro!",JOptionPane.ERROR_MESSAGE);
+			} else if (PesquisadorDAO.getInstance().isValidEmail(cadastroPesquisador.getEmailField().getText())){
+				JOptionPane.showMessageDialog(null, "Insira um email valido no campo Email. Formato: nome@seuservidor.com", "Erro!",JOptionPane.ERROR_MESSAGE);
+			} else if (PesquisadorDAO.getInstance().isValidUrl(cadastroPesquisador.getLattesField().getText())){
+				JOptionPane.showMessageDialog(null, "Insira um link valido no campo Lattes. Formato: www.seusite.com", "Erro!",JOptionPane.ERROR_MESSAGE);
+			} else if (PesquisadorDAO.getInstance().isValidUrl(cadastroPesquisador.getLinkedinField().getText())){
+				JOptionPane.showMessageDialog(null, "Insira um link valido no campo LinkedIN. Formato: www.seusite.com", "Erro!",JOptionPane.ERROR_MESSAGE);
+			} else if (PesquisadorDAO.getInstance().existeLoginCadastro(cadastroPesquisador.getLoginField().getText(),cadastroPesquisador.getNomeField().getText())){
+				JOptionPane.showMessageDialog(null, "Este Login/Nome já exite, escolha outro!!", "Erro!", JOptionPane.ERROR_MESSAGE);
 			}else {
 				
 				LoginUser loginUser = new LoginUser();

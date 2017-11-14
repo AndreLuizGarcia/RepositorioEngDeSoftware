@@ -40,19 +40,16 @@ public class InputListenerEditarPesquisadorFrame implements ActionListener {
 					|| editarPesquisador.getLinkedinTextArea().getText().equals("")) 
 			{
 				JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
-			} else if (PesquisadorDAO.getInstance().isValidString(editarPesquisador.getNomeTextArea().getText())
-					||PesquisadorDAO.getInstance().isValidString(editarPesquisador.getEmailTextArea().getText())
-					||PesquisadorDAO.getInstance().isValidString(editarPesquisador.getBiografiaTextArea().getText())
-					||PesquisadorDAO.getInstance().isValidString(editarPesquisador.getLattesTextArea().getText())
-					||PesquisadorDAO.getInstance().isValidString(editarPesquisador.getLinkedinTextArea().getText())) 
-			{
-				JOptionPane.showMessageDialog(null, "Insira apenas letras nos campos!", "Erro!",
-						JOptionPane.ERROR_MESSAGE);
-				JOptionPane.showMessageDialog(null, "Dica: Nessa fase de implementação, "
-						+ "não aceitamos espaços entre as palavras. \nVocê pode fazer a separação das"
-						+ " palavras juntando as e sempre colocando \na proxima com inicial maiscula: "
-						+ "Casa Amarela ->CasaAmarela.");
-			} else {
+			}  else if (PesquisadorDAO.getInstance().isValidString(editarPesquisador.getNomeTextArea().getText())){
+				JOptionPane.showMessageDialog(null, "Insira apenas letras no campo Nome", "Erro!",JOptionPane.ERROR_MESSAGE);
+			} else if (PesquisadorDAO.getInstance().isValidEmail(editarPesquisador.getEmailTextArea().getText())){
+				JOptionPane.showMessageDialog(null, "Insira um email valido no campo Email. Formato: nome@seuservidor.com", "Erro!",JOptionPane.ERROR_MESSAGE);
+			} else if (PesquisadorDAO.getInstance().isValidUrl(editarPesquisador.getLattesTextArea().getText())){
+				JOptionPane.showMessageDialog(null, "Insira um link valido no campo Lattes. Formato: www.seusite.com", "Erro!",JOptionPane.ERROR_MESSAGE);
+			} else if (PesquisadorDAO.getInstance().isValidUrl(editarPesquisador.getLinkedinTextArea().getText())){
+				JOptionPane.showMessageDialog(null, "Insira um link valido no campo LinkedIN. Formato: www.seusite.com", "Erro!",JOptionPane.ERROR_MESSAGE);
+			}else {
+				
 				Pesquisador pesquisador = new Pesquisador();
 				
 				pesquisador.setNome(editarPesquisador.getNomeTextArea().getText());
@@ -60,9 +57,10 @@ public class InputListenerEditarPesquisadorFrame implements ActionListener {
 				pesquisador.setEmail(editarPesquisador.getEmailTextArea().getText());
 				pesquisador.setLattes(editarPesquisador.getLattesTextArea().getText());
 				pesquisador.setLinkedin(editarPesquisador.getLinkedinTextArea().getText());
+				
 				try {
-					PesquisadorDAO.getInstance().editarPesquisador(pesquisador, p);
-					JOptionPane.showMessageDialog(null, "Atualizado com Sucesso!");
+					PesquisadorDAO.getInstance().editarPesquisador(pesquisador,p);
+					JOptionPane.showMessageDialog(null, "Cadastrado com Sucesso!");
 					editarPesquisador.dispose();
 					new MenuAdminFrame().setVisible(true);
 				} catch (SQLException r) {

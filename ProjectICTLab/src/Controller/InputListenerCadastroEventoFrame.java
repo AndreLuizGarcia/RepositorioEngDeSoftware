@@ -36,14 +36,11 @@ public class InputListenerCadastroEventoFrame implements ActionListener {
 			} else if (cadastroEvento.getResponsavelChoice().getSelectedItem() == null) {
 				JOptionPane.showMessageDialog(null,
 						"Você precisa cadastrar um pesquisador antes de cadastrar um evento!");
-			} else if (EventoDAO.getInstance().isValidString(cadastroEvento.getNomeField().getText())
-					||EventoDAO.getInstance().isValidString(cadastroEvento.getLocalField().getText())
-					||EventoDAO.getInstance().isValidInt(cadastroEvento.getDataField().getText())) {
-				JOptionPane.showMessageDialog(null, "Insira apenas letras no campo Nome, local e apenas numeros no campo data!", "Erro!",
+			} else if (EventoDAO.getInstance().isValidString(cadastroEvento.getNomeField().getText())) {
+				JOptionPane.showMessageDialog(null, "Insira apenas letras no campo Nome, local!", "Erro!",
 						JOptionPane.ERROR_MESSAGE);
-				JOptionPane.showMessageDialog(null, "Dica: Nessa fase de implementação, não aceitamos "
-						+ "espaços entre as palavras. \nVocê pode fazer a separação das palavras "
-						+ "juntando as e sempre colocando \na proxima com inicial maiscula: Casa Amarela ->CasaAmarela.");
+			}else if (EventoDAO.getInstance().isValidDate(cadastroEvento.getDataField().getText())){
+				JOptionPane.showMessageDialog(null, "Insira uma data válida! Formato: dd/mm/aaaa","Erro!",JOptionPane.ERROR_MESSAGE);
 			} else {
 
 				Evento evento = new Evento();

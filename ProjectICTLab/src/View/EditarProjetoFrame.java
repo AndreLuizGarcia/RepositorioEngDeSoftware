@@ -13,6 +13,7 @@ import Controller.InputListenerEditarProjetoFrame;
 //import Control.InputListenerCadastroAmigosMarioFrame;
 import Imagens.JBackground;
 import Model.Projeto;
+import java.awt.Color;
 
 public class EditarProjetoFrame extends JFrame {
 
@@ -95,6 +96,7 @@ public class EditarProjetoFrame extends JFrame {
 	private JLabel getLblCadastroPesquisador() {
 		if (lblCadastroPesquisador == null) {
 			lblCadastroPesquisador = new JLabel("Editar Projeto");
+			lblCadastroPesquisador.setForeground(Color.WHITE);
 			lblCadastroPesquisador.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			lblCadastroPesquisador.setBounds(132, 23, 227, 39);
 		}
@@ -103,6 +105,7 @@ public class EditarProjetoFrame extends JFrame {
 	private JLabel getLblNome() {
 		if (lblNome == null) {
 			lblNome = new JLabel("Nome:");
+			lblNome.setForeground(Color.WHITE);
 			lblNome.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblNome.setBounds(77, 84, 74, 33);
 		}
@@ -111,6 +114,7 @@ public class EditarProjetoFrame extends JFrame {
 	private JLabel getLblEmail() {
 		if (lblEmail == null) {
 			lblEmail = new JLabel("Status do Projeto:");
+			lblEmail.setForeground(Color.WHITE);
 			lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblEmail.setBounds(77, 111, 128, 33);
 		}

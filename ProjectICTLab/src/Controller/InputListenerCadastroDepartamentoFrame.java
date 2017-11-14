@@ -35,10 +35,9 @@ public class InputListenerCadastroDepartamentoFrame implements ActionListener {
 			} else if (cadastroDepartamento.getResponsavelChoice().getSelectedItem() == null) {
 				JOptionPane.showMessageDialog(null,
 						"Você precisa cadastrar um pesquisador antes de cadastrar um departamento!");
-			} else if (DepartamentoDAO.getInstance().isValidString(cadastroDepartamento.getNomeField().getText())||DepartamentoDAO.getInstance().isValidString(cadastroDepartamento.getDescricaoField().getText())) {
+			} else if (DepartamentoDAO.getInstance().isValidString(cadastroDepartamento.getNomeField().getText())) {
 				JOptionPane.showMessageDialog(null, "Insira apenas letras no campo Nome e Descrição!", "Erro!",
 						JOptionPane.ERROR_MESSAGE);
-				JOptionPane.showMessageDialog(null, "Dica: Nessa fase de implementação, não aceitamos espaços entre as palavras. \nVocê pode fazer a separação das palavras juntando as e sempre colocando \na proxima com inicial maiscula: Casa Amarela ->CasaAmarela.");
 				cadastroDepartamento.getNomeField().setText(null);
 				cadastroDepartamento.getDescricaoField().setText(null);
 			} else {

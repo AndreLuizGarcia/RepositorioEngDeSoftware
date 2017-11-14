@@ -36,15 +36,12 @@ public class InputListenerEditarEventoFrame implements ActionListener {
 					|| editarEvento.getLocalTextArea().getText().equals("")) 
 			{
 				JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
-			} else if (EventoDAO.getInstance().isValidString(editarEvento.getNomeTextArea().getText())
-					||EventoDAO.getInstance().isValidString(editarEvento.getLocalTextArea().getText())) 
+			} else if (EventoDAO.getInstance().isValidString(editarEvento.getNomeTextArea().getText())) 
 			{
 				JOptionPane.showMessageDialog(null, "Insira apenas letras no campo Nome e local!", "Erro!",
 						JOptionPane.ERROR_MESSAGE);
-				JOptionPane.showMessageDialog(null, "Dica: Nessa fase de implementação, "
-						+ "não aceitamos espaços entre as palavras. \nVocê pode fazer a separação das"
-						+ " palavras juntando as e sempre colocando \na proxima com inicial maiscula: "
-						+ "Casa Amarela ->CasaAmarela.");
+			}else if (EventoDAO.getInstance().isValidDate(editarEvento.getDataTextArea().getText())){
+				JOptionPane.showMessageDialog(null, "Insira uma data válida! Formato: dd/mm/aaaa","Erro!",JOptionPane.ERROR_MESSAGE);
 			} else {
 				Evento evento = new Evento();
 				

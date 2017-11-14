@@ -17,6 +17,7 @@ import Controller.BancoDeDados;
 import Controller.InputListenerListarPesquisadorFrame;
 import Imagens.JBackground;
 import Model.PesquisadorDAO;
+import java.awt.Color;
 
 public class ListarPesquisadorFrame extends JFrame {
 
@@ -129,6 +130,7 @@ public class ListarPesquisadorFrame extends JFrame {
 	private JLabel getLblListarPesquisador() {
 		if (lblListarPesquisador == null) {
 			lblListarPesquisador = new JLabel("Listar Pesquisador");
+			lblListarPesquisador.setForeground(Color.WHITE);
 			lblListarPesquisador.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			lblListarPesquisador.setBounds(134, 22, 201, 39);
 		}

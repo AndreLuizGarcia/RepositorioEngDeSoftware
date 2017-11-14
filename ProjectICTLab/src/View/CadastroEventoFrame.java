@@ -13,6 +13,7 @@ import javax.swing.border.EmptyBorder;
 import Controller.InputListenerCadastroEventoFrame;
 import Imagens.JBackground;
 import Model.PesquisadorDAO;
+import java.awt.Color;
 
 public class CadastroEventoFrame extends JFrame {
 
@@ -64,7 +65,7 @@ public class CadastroEventoFrame extends JFrame {
 	public JTextField getDataField() {
 		if (dataField == null) {
 			dataField = new JTextField();
-			dataField.setBounds(173, 143, 86, 20);
+			dataField.setBounds(184, 143, 122, 20);
 			dataField.setColumns(10);
 		}
 		return dataField;
@@ -72,7 +73,7 @@ public class CadastroEventoFrame extends JFrame {
 	public JTextField getNomeField() {
 		if (nomeField == null) {
 			nomeField = new JTextField();
-			nomeField.setBounds(173, 92, 86, 20);
+			nomeField.setBounds(184, 92, 122, 20);
 			nomeField.setColumns(10);
 		}
 		return nomeField;
@@ -108,6 +109,7 @@ public class CadastroEventoFrame extends JFrame {
 	private JLabel getLblCadastroPesquisador() {
 		if (lblCadastroPesquisador == null) {
 			lblCadastroPesquisador = new JLabel("Cadastro Evento");
+			lblCadastroPesquisador.setForeground(Color.WHITE);
 			lblCadastroPesquisador.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			lblCadastroPesquisador.setBounds(132, 23, 227, 39);
 		}
@@ -116,6 +118,7 @@ public class CadastroEventoFrame extends JFrame {
 	private JLabel getLblNome() {
 		if (lblNome == null) {
 			lblNome = new JLabel("Nome:");
+			lblNome.setForeground(Color.WHITE);
 			lblNome.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblNome.setBounds(77, 84, 74, 33);
 		}
@@ -124,6 +127,7 @@ public class CadastroEventoFrame extends JFrame {
 	private JLabel getLblEmail() {
 		if (lblEmail == null) {
 			lblEmail = new JLabel("Respons\u00E1vel:");
+			lblEmail.setForeground(Color.WHITE);
 			lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblEmail.setBounds(77, 111, 103, 33);
 		}
@@ -132,6 +136,7 @@ public class CadastroEventoFrame extends JFrame {
 	private JLabel getLblBiografia() {
 		if (lblBiografia == null) {
 			lblBiografia = new JLabel("Data:");
+			lblBiografia.setForeground(Color.WHITE);
 			lblBiografia.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblBiografia.setBounds(77, 135, 74, 33);
 		}
@@ -149,13 +154,14 @@ public class CadastroEventoFrame extends JFrame {
 					break;
 				responsavelChoice.add(tabela[i]);
 			}			
-			responsavelChoice.setBounds(173, 118, 86, 20);
+			responsavelChoice.setBounds(184, 118, 122, 20);
 		}
 		return responsavelChoice;
 	}
 	private JLabel getLblLocal() {
 		if (lblLocal == null) {
 			lblLocal = new JLabel("Local:");
+			lblLocal.setForeground(Color.WHITE);
 			lblLocal.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblLocal.setBounds(77, 160, 74, 33);
 		}
@@ -165,7 +171,7 @@ public class CadastroEventoFrame extends JFrame {
 		if (localField == null) {
 			localField = new JTextField();
 			localField.setColumns(10);
-			localField.setBounds(173, 168, 86, 20);
+			localField.setBounds(184, 168, 122, 20);
 		}
 		return localField;
 	}

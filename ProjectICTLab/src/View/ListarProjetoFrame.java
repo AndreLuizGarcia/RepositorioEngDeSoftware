@@ -1,19 +1,23 @@
 package View;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
+import Controller.BancoDeDados;
+import Controller.InputListenerListarProjetoFrame;
 import Imagens.JBackground;
-import javax.swing.JLabel;
-import java.awt.Font;
+import Model.ProjetoDAO;
 
 public class ListarProjetoFrame extends JFrame {
 
@@ -24,7 +28,7 @@ public class ListarProjetoFrame extends JFrame {
 	private JButton btnVoltar;
 	private JPanel contentPane_1;
 	private JList<String> list;
-	//private InputListenerListarAmigosMarioFrame listenerAmigos;
+	private InputListenerListarProjetoFrame listenerProjeto;
 	private JPanel listPanel;
 	private JScrollPane scrollPane;
 	private JLabel lblListarPesquisador;
@@ -32,8 +36,8 @@ public class ListarProjetoFrame extends JFrame {
 	public ListarProjetoFrame() {
 		setTitle("Listar Projeto");
 		initialize();
-//		listenerAmigos = new InputListenerListarAmigosMarioFrame(this, BancoDeDados.getInstance());
-//		inicializarListeners();
+		listenerProjeto = new InputListenerListarProjetoFrame(this, BancoDeDados.getInstance());
+		inicializarListeners();
 	}
 	private JButton getBtnEditar() {
 		if (btnEditar == null) {
@@ -74,14 +78,14 @@ public class ListarProjetoFrame extends JFrame {
 			//DefaultListModel<String> model = new DefaultListModel<String>();
 //			model.addElement("YOSHI");
 //			model.addElement("LUIGI");
-		//	list = new JList<String>(AmigoDAO.getInstance().getAllAmigos());
+			list = new JList<String>(ProjetoDAO.getInstance().getAllProjeto());
 			list.setBounds(71, 82, 285, 150);
 		}
 		return list;
 	}
 	
 	public void refreshList(){
-		//list.setModel(AmigoDAO.getInstance().getAllAmigos());
+		list.setModel(ProjetoDAO.getInstance().getAllProjeto());
 	}
 	
 	private JPanel getListPanel() {
@@ -102,12 +106,12 @@ public class ListarProjetoFrame extends JFrame {
 		return scrollPane;
 	}
 	
-//	private void inicializarListeners(){
-//		getBtnEditar().addActionListener(listenerAmigos);
-//		getBtnGerarRelatrio().addActionListener(listenerAmigos);
-//		getBtnRemover().addActionListener(listenerAmigos);
-//		getBtnVoltar().addActionListener(listenerAmigos);
-//	}
+	private void inicializarListeners(){
+		getBtnEditar().addActionListener(listenerProjeto);
+		getBtnGerarRelatrio().addActionListener(listenerProjeto);
+		getBtnRemover().addActionListener(listenerProjeto);
+		getBtnVoltar().addActionListener(listenerProjeto);
+	}
 	private void initialize() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -129,6 +133,7 @@ public class ListarProjetoFrame extends JFrame {
 	private JLabel getLblListarPesquisador() {
 		if (lblListarPesquisador == null) {
 			lblListarPesquisador = new JLabel("Listar Projeto");
+			lblListarPesquisador.setForeground(Color.WHITE);
 			lblListarPesquisador.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			lblListarPesquisador.setBounds(134, 22, 201, 39);
 		}

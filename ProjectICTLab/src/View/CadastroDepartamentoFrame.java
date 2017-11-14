@@ -13,6 +13,7 @@ import javax.swing.border.EmptyBorder;
 import Controller.InputListenerCadastroDepartamentoFrame;
 import Imagens.JBackground;
 import Model.PesquisadorDAO;
+import java.awt.Color;
 
 public class CadastroDepartamentoFrame extends JFrame {
 
@@ -69,7 +70,7 @@ public class CadastroDepartamentoFrame extends JFrame {
 	public JTextField getDescricaoField() {
 		if (descricaoField == null) {
 			descricaoField = new JTextField();
-			descricaoField.setBounds(173, 143, 86, 58);
+			descricaoField.setBounds(195, 143, 118, 64);
 			descricaoField.setColumns(10);
 		}
 		return descricaoField;
@@ -77,7 +78,7 @@ public class CadastroDepartamentoFrame extends JFrame {
 	public JTextField getNomeField() {
 		if (nomeField == null) {
 			nomeField = new JTextField();
-			nomeField.setBounds(173, 92, 86, 20);
+			nomeField.setBounds(195, 92, 118, 20);
 			nomeField.setColumns(10);
 		}
 		return nomeField;
@@ -107,6 +108,7 @@ public class CadastroDepartamentoFrame extends JFrame {
 	private JLabel getLblCadastroPesquisador() {
 		if (lblCadastroPesquisador == null) {
 			lblCadastroPesquisador = new JLabel("Cadastro Departamento");
+			lblCadastroPesquisador.setForeground(Color.WHITE);
 			lblCadastroPesquisador.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			lblCadastroPesquisador.setBounds(132, 23, 227, 39);
 		}
@@ -115,6 +117,7 @@ public class CadastroDepartamentoFrame extends JFrame {
 	private JLabel getLblNome() {
 		if (lblNome == null) {
 			lblNome = new JLabel("Nome:");
+			lblNome.setForeground(Color.WHITE);
 			lblNome.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblNome.setBounds(77, 84, 74, 33);
 		}
@@ -123,6 +126,7 @@ public class CadastroDepartamentoFrame extends JFrame {
 	private JLabel getLblEmail() {
 		if (lblEmail == null) {
 			lblEmail = new JLabel("Respons\u00E1vel:");
+			lblEmail.setForeground(Color.WHITE);
 			lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblEmail.setBounds(77, 111, 103, 33);
 		}
@@ -131,6 +135,7 @@ public class CadastroDepartamentoFrame extends JFrame {
 	private JLabel getLblBiografia() {
 		if (lblBiografia == null) {
 			lblBiografia = new JLabel("Descri\u00E7\u00E3o:");
+			lblBiografia.setForeground(Color.WHITE);
 			lblBiografia.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblBiografia.setBounds(77, 143, 74, 33);
 		}
@@ -152,7 +157,7 @@ public class CadastroDepartamentoFrame extends JFrame {
 			
 			
 			
-			responsavelChoice.setBounds(173, 118, 86, 20);
+			responsavelChoice.setBounds(195, 118, 118, 20);
 		}
 		return responsavelChoice;
 	}

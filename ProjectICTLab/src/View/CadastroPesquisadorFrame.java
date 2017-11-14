@@ -12,6 +12,7 @@ import javax.swing.border.EmptyBorder;
 
 import Controller.InputListenerCadastroPesquisadorFrame;
 import Imagens.JBackground;
+import java.awt.Color;
 
 public class CadastroPesquisadorFrame extends JFrame {
 
@@ -127,6 +128,7 @@ public class CadastroPesquisadorFrame extends JFrame {
 	private JLabel getLblCadastroPesquisador() {
 		if (lblCadastroPesquisador == null) {
 			lblCadastroPesquisador = new JLabel("Cadastro Pesquisador");
+			lblCadastroPesquisador.setForeground(Color.WHITE);
 			lblCadastroPesquisador.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			lblCadastroPesquisador.setBounds(132, 23, 201, 39);
 		}
@@ -135,6 +137,7 @@ public class CadastroPesquisadorFrame extends JFrame {
 	private JLabel getLblNome() {
 		if (lblNome == null) {
 			lblNome = new JLabel("Nome:");
+			lblNome.setForeground(Color.WHITE);
 			lblNome.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblNome.setBounds(77, 84, 74, 33);
 		}
@@ -143,6 +146,7 @@ public class CadastroPesquisadorFrame extends JFrame {
 	private JLabel getLblEmail() {
 		if (lblEmail == null) {
 			lblEmail = new JLabel("Email:");
+			lblEmail.setForeground(Color.WHITE);
 			lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblEmail.setBounds(77, 111, 74, 33);
 		}
@@ -151,6 +155,7 @@ public class CadastroPesquisadorFrame extends JFrame {
 	private JLabel getLblBiografia() {
 		if (lblBiografia == null) {
 			lblBiografia = new JLabel("Biografia:");
+			lblBiografia.setForeground(Color.WHITE);
 			lblBiografia.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblBiografia.setBounds(77, 143, 74, 33);
 		}
@@ -159,6 +164,7 @@ public class CadastroPesquisadorFrame extends JFrame {
 	private JLabel getLblLattes() {
 		if (lblLattes == null) {
 			lblLattes = new JLabel("Lattes:");
+			lblLattes.setForeground(Color.WHITE);
 			lblLattes.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblLattes.setBounds(259, 86, 55, 28);
 		}
@@ -167,6 +173,7 @@ public class CadastroPesquisadorFrame extends JFrame {
 	private JLabel getLblLinkedin() {
 		if (lblLinkedin == null) {
 			lblLinkedin = new JLabel("LinkedIN:");
+			lblLinkedin.setForeground(Color.WHITE);
 			lblLinkedin.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblLinkedin.setBounds(259, 116, 74, 28);
 		}
@@ -191,6 +198,7 @@ public class CadastroPesquisadorFrame extends JFrame {
 	private JLabel getLblLogin() {
 		if (lblLogin == null) {
 			lblLogin = new JLabel("Login:");
+			lblLogin.setForeground(Color.WHITE);
 			lblLogin.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblLogin.setBounds(259, 143, 55, 28);
 		}
@@ -199,6 +207,7 @@ public class CadastroPesquisadorFrame extends JFrame {
 	private JLabel getLblSenha() {
 		if (lblSenha == null) {
 			lblSenha = new JLabel("Senha:");
+			lblSenha.setForeground(Color.WHITE);
 			lblSenha.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblSenha.setBounds(260, 172, 55, 28);
 		}

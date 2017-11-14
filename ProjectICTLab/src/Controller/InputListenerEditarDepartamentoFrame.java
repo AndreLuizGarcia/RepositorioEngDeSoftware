@@ -34,15 +34,10 @@ public class InputListenerEditarDepartamentoFrame implements ActionListener {
 					|| editarDepartamento.getDescricaoTextArea().getText().equals("")) 
 			{
 				JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
-			} else if (DepartamentoDAO.getInstance().isValidString(editarDepartamento.getNomeTextArea().getText())
-					||DepartamentoDAO.getInstance().isValidString(editarDepartamento.getDescricaoTextArea().getText())) 
+			} else if (DepartamentoDAO.getInstance().isValidString(editarDepartamento.getNomeTextArea().getText())) 
 			{
 				JOptionPane.showMessageDialog(null, "Insira apenas letras no campo Nome e Descrição!", "Erro!",
 						JOptionPane.ERROR_MESSAGE);
-				JOptionPane.showMessageDialog(null, "Dica: Nessa fase de implementação, "
-						+ "não aceitamos espaços entre as palavras. \nVocê pode fazer a separação das"
-						+ " palavras juntando as e sempre colocando \na proxima com inicial maiscula: "
-						+ "Casa Amarela ->CasaAmarela.");
 			} else {
 				Departamento departamento = new Departamento();
 				

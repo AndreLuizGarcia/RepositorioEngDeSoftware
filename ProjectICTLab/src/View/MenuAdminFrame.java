@@ -71,7 +71,7 @@ public class MenuAdminFrame extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			btnCadastrarPesquisador.setBounds(45, 110, 169, 23);
+			btnCadastrarPesquisador.setBounds(20, 110, 194, 23);
 		}
 		return btnCadastrarPesquisador;
 	}
@@ -79,7 +79,7 @@ public class MenuAdminFrame extends JFrame {
 	private JButton getBtnListarPesquisador() {
 		if (btnListarPesquisador == null) {
 			btnListarPesquisador = new JButton("Listar Pesquisador");
-			btnListarPesquisador.setBounds(45, 157, 169, 23);
+			btnListarPesquisador.setBounds(20, 157, 194, 23);
 		}
 		return btnListarPesquisador;
 	}
@@ -101,6 +101,7 @@ public class MenuAdminFrame extends JFrame {
 	private JLabel getLblMenuDoAdministrador() {
 		if (lblMenuDoAdministrador == null) {
 			lblMenuDoAdministrador = new JLabel("Menu do Administrador");
+			lblMenuDoAdministrador.setForeground(Color.WHITE);
 			lblMenuDoAdministrador.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			lblMenuDoAdministrador.setBounds(116, 37, 221, 39);
 		}
@@ -109,14 +110,14 @@ public class MenuAdminFrame extends JFrame {
 	private JButton getBtnCadastrarDepartamento() {
 		if (btnCadastrarDepartamento == null) {
 			btnCadastrarDepartamento = new JButton("Cadastrar Departamento");
-			btnCadastrarDepartamento.setBounds(240, 110, 169, 23);
+			btnCadastrarDepartamento.setBounds(240, 110, 194, 23);
 		}
 		return btnCadastrarDepartamento;
 	}
 	private JButton getBtnListarDepartamento() {
 		if (btnListarDepartamento == null) {
 			btnListarDepartamento = new JButton("Listar Departamento");
-			btnListarDepartamento.setBounds(240, 157, 169, 23);
+			btnListarDepartamento.setBounds(240, 157, 194, 23);
 		}
 		return btnListarDepartamento;
 	}

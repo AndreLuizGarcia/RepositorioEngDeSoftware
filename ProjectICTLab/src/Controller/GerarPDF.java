@@ -19,8 +19,14 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import Model.Departamento;
 import Model.DepartamentoDAO;
+import Model.Equipamento;
+import Model.EquipamentoDAO;
+import Model.Evento;
+import Model.EventoDAO;
 import Model.Pesquisador;
 import Model.PesquisadorDAO;
+import Model.Projeto;
+import Model.ProjetoDAO;
 
 public class GerarPDF {
 
@@ -54,7 +60,7 @@ public class GerarPDF {
 		title.setSpacingBefore(30);
 		doc.add(title);
 
-		PdfPTable pesquisadorTable = new PdfPTable(new float[] { 0.1f, 0.1f, 0.1f, 0.1f, 0.1f });
+		PdfPTable pesquisadorTable = new PdfPTable(new float[] { 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f });
 		pesquisadorTable.setWidthPercentage(130.0f);
 		pesquisadorTable.setHorizontalAlignment(Element.ALIGN_CENTER);
 		pesquisadorTable.setSpacingBefore(20);
@@ -63,6 +69,7 @@ public class GerarPDF {
 		pesquisadorTable.addCell("Biografia");
 		pesquisadorTable.addCell("Lattes");
 		pesquisadorTable.addCell("LinkedIN");
+		pesquisadorTable.addCell("Login");		
 
 		ArrayList<Pesquisador> pesquisador = PesquisadorDAO.getInstance().getPDFAllPesquisadores();
 
@@ -72,6 +79,9 @@ public class GerarPDF {
 			pesquisadorTable.addCell(p.getBiografia());
 			pesquisadorTable.addCell(p.getLattes());
 			pesquisadorTable.addCell(p.getLinkedin());
+			System.out.println(p.getLoginUser().getLogin());
+			pesquisadorTable.addCell(p.getLoginUser().getLogin());
+			
 		}
 
 		doc.add(pesquisadorTable);
@@ -114,8 +124,8 @@ public class GerarPDF {
 
 		for (Departamento d : departamento) {
 			departamentoTable.addCell(d.getNome());
-			departamentoTable.addCell(d.getDescricao());
 			departamentoTable.addCell(d.getResponsavel());
+			departamentoTable.addCell(d.getDescricao());	
 		}
 
 		doc.add(departamentoTable);
@@ -128,45 +138,43 @@ public class GerarPDF {
 			fos.close();
 	}
 	
-	public void gerarRelatorioInimigos() throws MalformedURLException, IOException, DocumentException {
+	public void gerarRelatorioEvento() throws MalformedURLException, IOException, DocumentException {
 		doc = new Document(PageSize.A4, 72, 72, 72, 72);
 		fos = new FileOutputStream(path);
 		PdfWriter.getInstance(doc, fos);
 		doc.open();
 
-		// Image logo = Image.getInstance("src/Imagens/cadastrarUsuario.png");
-		// logo.setAlignment(Element.ALIGN_CENTER);
-		// doc.add(logo);
-
 		Font fonte = new Font(FontFamily.UNDEFINED, 20, Font.BOLD);
-		title = new Paragraph("Tabelas do Banco de Dados MarioGO", fonte);
+		title = new Paragraph("Tabelas do Banco de Dados ICT Lab", fonte);
 		title.setAlignment(Element.ALIGN_CENTER);
 		title.setSpacingBefore(30);
 		doc.add(title);
 
 		fonte.setSize(12);
-		title = new Paragraph("Tabela Inimigos do Mário", fonte);
+		title = new Paragraph("Tabela dos Eventos", fonte);
 		title.setAlignment(Element.ALIGN_CENTER);
 		title.setSpacingBefore(30);
 		doc.add(title);
 
-		PdfPTable inimigoTable = new PdfPTable(new float[] { 0.1f, 0.1f, 0.1f });
-		inimigoTable.setWidthPercentage(130.0f);
-		inimigoTable.setHorizontalAlignment(Element.ALIGN_CENTER);
-		inimigoTable.setSpacingBefore(20);
-		inimigoTable.addCell("Nome");
-		inimigoTable.addCell("Habilidade");
-		inimigoTable.addCell("Historia");
+		PdfPTable eventoTable = new PdfPTable(new float[] { 0.1f, 0.1f, 0.1f, 0.1f });
+		eventoTable.setWidthPercentage(130.0f);
+		eventoTable.setHorizontalAlignment(Element.ALIGN_CENTER);
+		eventoTable.setSpacingBefore(20);
+		eventoTable.addCell("Nome");
+		eventoTable.addCell("Responsavel");
+		eventoTable.addCell("Data");
+		eventoTable.addCell("Local");
 
-		ArrayList<Inimigo> inimigo = InimigoDAO.getInstance().getPDFAllInimigos();
+		ArrayList<Evento> evento = EventoDAO.getInstance().getPDFAllEvento();
 
-		for (Inimigo i : inimigo) {
-			inimigoTable.addCell(i.getNome());
-			inimigoTable.addCell(i.getHabilidade());
-			inimigoTable.addCell(i.getHistoria());
+		for (Evento e : evento) {
+			eventoTable.addCell(e.getNome());
+			eventoTable.addCell(e.getResponsavel());
+			eventoTable.addCell(e.getData());	
+			eventoTable.addCell(e.getLocal());
 		}
 
-		doc.add(inimigoTable);
+		doc.add(eventoTable);
 
 		JOptionPane.showMessageDialog(null, "Relatório gerado com Sucesso!", "Sucesso!",
 				JOptionPane.INFORMATION_MESSAGE);
@@ -176,43 +184,41 @@ public class GerarPDF {
 			fos.close();
 	}
 	
-	public void gerarRelatorioPoder() throws MalformedURLException, IOException, DocumentException {
+	public void gerarRelatorioEquipamento() throws MalformedURLException, IOException, DocumentException {
 		doc = new Document(PageSize.A4, 72, 72, 72, 72);
 		fos = new FileOutputStream(path);
 		PdfWriter.getInstance(doc, fos);
 		doc.open();
 
-		// Image logo = Image.getInstance("src/Imagens/cadastrarUsuario.png");
-		// logo.setAlignment(Element.ALIGN_CENTER);
-		// doc.add(logo);
-
 		Font fonte = new Font(FontFamily.UNDEFINED, 20, Font.BOLD);
-		title = new Paragraph("Tabelas do Banco de Dados MarioGO", fonte);
+		title = new Paragraph("Tabelas do Banco de Dados ICT Lab", fonte);
 		title.setAlignment(Element.ALIGN_CENTER);
 		title.setSpacingBefore(30);
 		doc.add(title);
 
 		fonte.setSize(12);
-		title = new Paragraph("Tabela dos Poderes", fonte);
+		title = new Paragraph("Tabela dos Equipamentos", fonte);
 		title.setAlignment(Element.ALIGN_CENTER);
 		title.setSpacingBefore(30);
 		doc.add(title);
 
-		PdfPTable poderTable = new PdfPTable(new float[] { 0.1f, 0.1f});
-		poderTable.setWidthPercentage(130.0f);
-		poderTable.setHorizontalAlignment(Element.ALIGN_CENTER);
-		poderTable.setSpacingBefore(20);
-		poderTable.addCell("Nome");
-		poderTable.addCell("Efeito");
+		PdfPTable equipamentoTable = new PdfPTable(new float[] { 0.1f, 0.1f, 0.1f});
+		equipamentoTable.setWidthPercentage(130.0f);
+		equipamentoTable.setHorizontalAlignment(Element.ALIGN_CENTER);
+		equipamentoTable.setSpacingBefore(20);
+		equipamentoTable.addCell("Nome");
+		equipamentoTable.addCell("Tombo");
+		equipamentoTable.addCell("Descrição");
 
-		ArrayList<Poder> poder = PoderDAO.getInstance().getPDFAllPoder();
+		ArrayList<Equipamento> equipamento = EquipamentoDAO.getInstance().getPDFAllEquipamento();
 
-		for (Poder p : poder) {
-			poderTable.addCell(p.getNome());
-			poderTable.addCell(p.getEfeito());
+		for (Equipamento e : equipamento) {
+			equipamentoTable.addCell(e.getNome());
+			equipamentoTable.addCell(e.getTombo());
+			equipamentoTable.addCell(e.getDescricao());	
 		}
 
-		doc.add(poderTable);
+		doc.add(equipamentoTable);
 
 		JOptionPane.showMessageDialog(null, "Relatório gerado com Sucesso!", "Sucesso!",
 				JOptionPane.INFORMATION_MESSAGE);
@@ -222,43 +228,39 @@ public class GerarPDF {
 			fos.close();
 	}
 	
-	public void gerarRelatorioRegiao() throws MalformedURLException, IOException, DocumentException {
+	public void gerarRelatorioProjeto() throws MalformedURLException, IOException, DocumentException {
 		doc = new Document(PageSize.A4, 72, 72, 72, 72);
 		fos = new FileOutputStream(path);
 		PdfWriter.getInstance(doc, fos);
 		doc.open();
 
-		// Image logo = Image.getInstance("src/Imagens/cadastrarUsuario.png");
-		// logo.setAlignment(Element.ALIGN_CENTER);
-		// doc.add(logo);
-
 		Font fonte = new Font(FontFamily.UNDEFINED, 20, Font.BOLD);
-		title = new Paragraph("Tabelas do Banco de Dados MarioGO", fonte);
+		title = new Paragraph("Tabelas do Banco de Dados ICT Lab", fonte);
 		title.setAlignment(Element.ALIGN_CENTER);
 		title.setSpacingBefore(30);
 		doc.add(title);
 
 		fonte.setSize(12);
-		title = new Paragraph("Tabela das Regiões", fonte);
+		title = new Paragraph("Tabela dos Projetos", fonte);
 		title.setAlignment(Element.ALIGN_CENTER);
 		title.setSpacingBefore(30);
 		doc.add(title);
 
-		PdfPTable regiaoTable = new PdfPTable(new float[] { 0.1f, 0.1f});
-		regiaoTable.setWidthPercentage(130.0f);
-		regiaoTable.setHorizontalAlignment(Element.ALIGN_CENTER);
-		regiaoTable.setSpacingBefore(20);
-		regiaoTable.addCell("Nome");
-		regiaoTable.addCell("Descrição");
+		PdfPTable projetoTable = new PdfPTable(new float[] { 0.1f, 0.1f});
+		projetoTable.setWidthPercentage(130.0f);
+		projetoTable.setHorizontalAlignment(Element.ALIGN_CENTER);
+		projetoTable.setSpacingBefore(20);
+		projetoTable.addCell("Nome");
+		projetoTable.addCell("Status do Projeto");
 
-		ArrayList<Regiao> regiao = RegiaoDAO.getInstance().getPDFAllRegiao();
+		ArrayList<Projeto> projeto = ProjetoDAO.getInstance().getPDFAllProjeto();
 
-		for (Regiao r : regiao) {
-			regiaoTable.addCell(r.getNome());
-			regiaoTable.addCell(r.getDescricao());
+		for (Projeto p : projeto) {
+			projetoTable.addCell(p.getNome());
+			projetoTable.addCell(p.getStatusDoProjeto());	
 		}
 
-		doc.add(regiaoTable);
+		doc.add(projetoTable);
 
 		JOptionPane.showMessageDialog(null, "Relatório gerado com Sucesso!", "Sucesso!",
 				JOptionPane.INFORMATION_MESSAGE);
@@ -267,5 +269,11 @@ public class GerarPDF {
 		if (fos != null)
 			fos.close();
 	}
+	
+	
+	
+	
+	
+	
 
 }

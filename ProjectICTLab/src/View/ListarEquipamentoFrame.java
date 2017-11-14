@@ -17,6 +17,7 @@ import Controller.BancoDeDados;
 import Controller.InputListenerListarEquipamentoFrame;
 import Imagens.JBackground;
 import Model.EquipamentoDAO;
+import java.awt.Color;
 
 public class ListarEquipamentoFrame extends JFrame {
 
@@ -129,6 +130,7 @@ public class ListarEquipamentoFrame extends JFrame {
 	private JLabel getLblListarPesquisador() {
 		if (lblListarPesquisador == null) {
 			lblListarPesquisador = new JLabel("Listar Equipamento");
+			lblListarPesquisador.setForeground(Color.WHITE);
 			lblListarPesquisador.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			lblListarPesquisador.setBounds(134, 22, 201, 39);
 		}

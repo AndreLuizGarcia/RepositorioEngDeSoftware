@@ -9,7 +9,6 @@ import javax.swing.JOptionPane;
 import Model.Projeto;
 import Model.ProjetoDAO;
 import View.EditarProjetoFrame;
-import View.MenuAdminFrame;
 import View.MenuPesquisadorFrame;
 
 public class InputListenerEditarProjetoFrame implements ActionListener {
@@ -40,10 +39,6 @@ public class InputListenerEditarProjetoFrame implements ActionListener {
 			{
 				JOptionPane.showMessageDialog(null, "Insira apenas letras no campo Nome e status!", "Erro!",
 						JOptionPane.ERROR_MESSAGE);
-				JOptionPane.showMessageDialog(null, "Dica: Nessa fase de implementação, "
-						+ "não aceitamos espaços entre as palavras. \nVocê pode fazer a separação das"
-						+ " palavras juntando as e sempre colocando \na proxima com inicial maiscula: "
-						+ "Casa Amarela ->CasaAmarela.");
 			} else {
 				Projeto projeto = new Projeto();
 				
@@ -54,7 +49,7 @@ public class InputListenerEditarProjetoFrame implements ActionListener {
 					ProjetoDAO.getInstance().editarProjeto(projeto, p);
 					JOptionPane.showMessageDialog(null, "Atualizado com Sucesso!");
 					editarProjeto.dispose();
-					new MenuAdminFrame().setVisible(true);
+					new MenuPesquisadorFrame().setVisible(true);
 				} catch (SQLException r) {
 					JOptionPane.showMessageDialog(null, r.getMessage());
 				}

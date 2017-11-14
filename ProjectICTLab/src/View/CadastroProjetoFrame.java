@@ -1,17 +1,22 @@
 package View;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import Controller.InputListenerCadastroProjetoFrame;
 //import Control.InputListenerCadastroAmigosMarioFrame;
 import Imagens.JBackground;
+import Model.PesquisadorDAO;
 
 public class CadastroProjetoFrame extends JFrame {
 
@@ -26,6 +31,10 @@ public class CadastroProjetoFrame extends JFrame {
     private JLabel lblNome;
     private JLabel lblEmail;
     private JTextField statusField;
+    private JPanel listPanel;
+	private JScrollPane scrollPane;
+	private JList<String> list;
+	private JLabel lblPesquisadoresEnvolvidos;
 
 	public CadastroProjetoFrame() {
 		setTitle("Cadastro Projeto");
@@ -87,10 +96,13 @@ public class CadastroProjetoFrame extends JFrame {
         contentPane_1.add(getLblNome());
         contentPane_1.add(getLblEmail());
 		contentPane_1.add(getStatusField());
+		contentPane_1.add(getListPanel());
+		contentPane_1.add(getLblPesquisadoresEnvolvidos());
 	}
 	private JLabel getLblCadastroProjeto() {
 		if (lblCadastroProjeto == null) {
 			lblCadastroProjeto = new JLabel("Cadastro Projeto");
+			lblCadastroProjeto.setForeground(Color.WHITE);
 			lblCadastroProjeto.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			lblCadastroProjeto.setBounds(132, 23, 227, 39);
 		}
@@ -99,6 +111,7 @@ public class CadastroProjetoFrame extends JFrame {
 	private JLabel getLblNome() {
 		if (lblNome == null) {
 			lblNome = new JLabel("Nome:");
+			lblNome.setForeground(Color.WHITE);
 			lblNome.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblNome.setBounds(77, 84, 74, 33);
 		}
@@ -107,6 +120,7 @@ public class CadastroProjetoFrame extends JFrame {
 	private JLabel getLblEmail() {
 		if (lblEmail == null) {
 			lblEmail = new JLabel("Status do Projeto:");
+			lblEmail.setForeground(Color.WHITE);
 			lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblEmail.setBounds(77, 111, 128, 33);
 		}
@@ -119,5 +133,44 @@ public class CadastroProjetoFrame extends JFrame {
 			statusField.setBounds(215, 119, 86, 20);
 		}
 		return statusField;
+	}
+	
+	public JList<String> getList() {
+		if (list == null) {
+			list = new JList<String>(PesquisadorDAO.getInstance().getAllPesquisadoresChoice());
+			list.setBounds(71, 82, 285, 150);
+		}
+		return list;
+	}
+	
+	public void refreshList(){
+		list.setModel(PesquisadorDAO.getInstance().getAllPesquisador());
+	}
+	
+	private JPanel getListPanel() {
+		if (listPanel == null) {
+			listPanel = new JPanel();			
+			listPanel.setBounds(215, 149, 169, 84);
+			listPanel.setLayout(new BorderLayout(0, 0));
+			listPanel.add(getScrollPane());
+		}
+		return listPanel;
+	}
+	 
+	private JScrollPane getScrollPane(){
+		if(scrollPane == null){
+			scrollPane = new JScrollPane();
+			scrollPane.setViewportView(getList());
+		}
+		return scrollPane;
+	}
+	private JLabel getLblPesquisadoresEnvolvidos() {
+		if (lblPesquisadoresEnvolvidos == null) {
+			lblPesquisadoresEnvolvidos = new JLabel("Pesquisadores:");
+			lblPesquisadoresEnvolvidos.setForeground(Color.WHITE);
+			lblPesquisadoresEnvolvidos.setFont(new Font("Tahoma", Font.PLAIN, 16));
+			lblPesquisadoresEnvolvidos.setBounds(77, 155, 128, 33);
+		}
+		return lblPesquisadoresEnvolvidos;
 	}
 }

@@ -25,8 +25,8 @@ public class DepartamentoDAO {
 	private static ResultSet resultSet = null;
 
 	public boolean isValidString(String nome) {
-		// String pattern = "[a-zA-Z ]+";
-		String pattern = "^[a-zA-ZÁÂÃÀÇÉÊÍÓÔÕÚÜáâãàçéêíóôõúü]*$";// nao posso colocar espaco pq na hora de editar eu faco split e 
+		String pattern = "[a-zA-Z ]+";
+		//String pattern = "^[a-zA-ZÁÂÃÀÇÉÊÍÓÔÕÚÜáâãàçéêíóôõúü]*$";// nao posso colocar espaco pq na hora de editar eu faco split e 
 																 // com os espacos da problema															
 		if (nome.matches(pattern)) {
 			return false; // se só tiver letra retorna falso e nao entra no if do input					
@@ -96,8 +96,8 @@ public class DepartamentoDAO {
 			ps = BancoDeDados.getInstance().getConnection().prepareStatement(sql);
 			resultSet = ps.executeQuery();
 			while (resultSet.next()) {
-				model.addElement(resultSet.getString("nomeDepartamento") + " " + resultSet.getString("responsavel")
-						+ " " + resultSet.getString("descrição"));
+				model.addElement(resultSet.getString("nomeDepartamento") + " -- " + resultSet.getString("responsavel")
+						+ " -- " + resultSet.getString("descrição"));
 			}
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage()+"bbbbbbb");

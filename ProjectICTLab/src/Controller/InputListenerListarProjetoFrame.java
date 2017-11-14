@@ -34,7 +34,7 @@ public class InputListenerListarProjetoFrame implements ActionListener {
 			new MenuPesquisadorFrame().setVisible(true);
 		} else if (e.getActionCommand().equals("Remover")) {
 			if (listarProjeto.getList().getSelectedIndex() != -1) {
-				String[] campos = listarProjeto.getList().getSelectedValue().split(" ");
+				String[] campos = listarProjeto.getList().getSelectedValue().split(" -- ");
 				try {
 					ProjetoDAO.getInstance().deleteProjeto(campos[0]);
 					listarProjeto.refreshList();
@@ -49,7 +49,7 @@ public class InputListenerListarProjetoFrame implements ActionListener {
 			}
 		} else if (e.getActionCommand().equals("Editar")) {
 			if (listarProjeto.getList().getSelectedIndex() != -1) {
-				String[] campos = listarProjeto.getList().getSelectedValue().split(" ");
+				String[] campos = listarProjeto.getList().getSelectedValue().split(" -- ");
 				Projeto p = ProjetoDAO.getInstance().getProjeto(campos[0]);
 				listarProjeto.dispose();
 				new EditarProjetoFrame(p).setVisible(true);
@@ -63,7 +63,7 @@ public class InputListenerListarProjetoFrame implements ActionListener {
 				String path = String.valueOf(fileChooser.getSelectedFile());
 				GerarPDF gerarPDF = new GerarPDF(banco, path);
 				try {
-					gerarPDF.gerarRelatorioPoder();
+					gerarPDF.gerarRelatorioProjeto();
 				} catch (IOException | DocumentException e1) {
 					e1.printStackTrace();
 				}

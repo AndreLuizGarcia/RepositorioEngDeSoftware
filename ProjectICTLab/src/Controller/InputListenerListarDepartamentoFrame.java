@@ -22,7 +22,7 @@ public class InputListenerListarDepartamentoFrame implements ActionListener {
 	private JFileChooser fileChooser;
 	private BancoDeDados banco;
 
-	public InputListenerListarDepartamentoFrame(ListarDepartamentoFrame listarDepartamento,BancoDeDados banco) {
+	public InputListenerListarDepartamentoFrame(ListarDepartamentoFrame listarDepartamento, BancoDeDados banco) {
 		this.listarDepartamento = listarDepartamento;
 		this.banco = banco;
 	}
@@ -34,23 +34,27 @@ public class InputListenerListarDepartamentoFrame implements ActionListener {
 			new MenuAdminFrame().setVisible(true);
 		} else if (e.getActionCommand().equals("Remover")) {
 			if (listarDepartamento.getList().getSelectedIndex() != -1) {
-				String[] campos = listarDepartamento.getList().getSelectedValue().split(" ");
-				try {
-					System.out.println("campos[2] = " + campos[0]);
-					DepartamentoDAO.getInstance().deleteDepartamento(campos[0]);
-					listarDepartamento.refreshList();
-					JOptionPane.showMessageDialog(null, "Deletado!");
-					if(listarDepartamento.getList().getSelectedIndex() == -1){
-						listarDepartamento.dispose();
-						new MenuAdminFrame().setVisible(true);
+				int i = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover?", "Saída",
+						JOptionPane.YES_NO_OPTION);
+				if (i == JOptionPane.YES_OPTION) {
+					String[] campos = listarDepartamento.getList().getSelectedValue().split(" -- ");
+					try {
+						DepartamentoDAO.getInstance().deleteDepartamento(campos[0]);
+						listarDepartamento.refreshList();
+						JOptionPane.showMessageDialog(null, "Deletado!");
+						if (listarDepartamento.getList().getSelectedIndex() == -1) {
+							listarDepartamento.dispose();
+							new MenuAdminFrame().setVisible(true);
+						}
+					} catch (SQLException r) {
+						JOptionPane.showMessageDialog(null, r.getMessage());
 					}
-				} catch (SQLException r) {
-					JOptionPane.showMessageDialog(null, r.getMessage());
 				}
-			}
+			} else
+				JOptionPane.showMessageDialog(null, "Nenhum elemento selecionado.");
 		} else if (e.getActionCommand().equals("Editar")) {
 			if (listarDepartamento.getList().getSelectedIndex() != -1) {
-				String[] campos = listarDepartamento.getList().getSelectedValue().split(" ");
+				String[] campos = listarDepartamento.getList().getSelectedValue().split(" -- ");
 				System.out.println(campos[0]);
 				Departamento d = DepartamentoDAO.getInstance().getDepartamento(campos[0]);
 				listarDepartamento.dispose();
@@ -61,7 +65,7 @@ public class InputListenerListarDepartamentoFrame implements ActionListener {
 			fileChooser = new JFileChooser();
 			fileChooser.setDialogTitle("Escolha um local para salvar");
 			int retorno = fileChooser.showSaveDialog(null);
-			if(retorno == JFileChooser.APPROVE_OPTION){
+			if (retorno == JFileChooser.APPROVE_OPTION) {
 				String path = String.valueOf(fileChooser.getSelectedFile());
 				GerarPDF gerarPDF = new GerarPDF(banco, path);
 				try {

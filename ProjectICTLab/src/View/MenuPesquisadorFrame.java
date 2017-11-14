@@ -108,6 +108,7 @@ public class MenuPesquisadorFrame extends JFrame {
 	private JLabel getLblMenuDoAdministrador() {
 		if (lblMenuDoAdministrador == null) {
 			lblMenuDoAdministrador = new JLabel("Menu do Pesquisador");
+			lblMenuDoAdministrador.setForeground(Color.WHITE);
 			lblMenuDoAdministrador.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			lblMenuDoAdministrador.setBounds(118, 11, 221, 39);
 		}

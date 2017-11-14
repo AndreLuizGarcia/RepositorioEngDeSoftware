@@ -37,15 +37,10 @@ public class InputListenerEditarEquipamentoFrame implements ActionListener {
 			{
 				JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
 			} else if (EquipamentoDAO.getInstance().isValidString(editarEquipamento.getNomeTextArea().getText())
-					||EquipamentoDAO.getInstance().isValidString(editarEquipamento.getDescricaoTextArea().getText())
 					||EquipamentoDAO.getInstance().isValidInt(editarEquipamento.getTomboTextArea().getText())) 
 			{
 				JOptionPane.showMessageDialog(null, "Insira apenas letras no campo Nome, Descrição e apenas numeros no campo tombo !", "Erro!",
 						JOptionPane.ERROR_MESSAGE);
-				JOptionPane.showMessageDialog(null, "Dica: Nessa fase de implementação, "
-						+ "não aceitamos espaços entre as palavras. \nVocê pode fazer a separação das"
-						+ " palavras juntando as e sempre colocando \na proxima com inicial maiscula: "
-						+ "Casa Amarela ->CasaAmarela.");
 			} else {
 				Equipamento equipamento = new Equipamento();
 				

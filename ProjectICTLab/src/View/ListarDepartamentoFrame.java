@@ -17,6 +17,7 @@ import Controller.BancoDeDados;
 import Controller.InputListenerListarDepartamentoFrame;
 import Imagens.JBackground;
 import Model.DepartamentoDAO;
+import java.awt.Color;
 
 public class ListarDepartamentoFrame extends JFrame {
 
@@ -129,6 +130,7 @@ public class ListarDepartamentoFrame extends JFrame {
 	private JLabel getLblListarDepartamento() {
 		if (lblListarDepartamento == null) {
 			lblListarDepartamento = new JLabel("Listar Departamento");
+			lblListarDepartamento.setForeground(Color.WHITE);
 			lblListarDepartamento.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			lblListarDepartamento.setBounds(134, 22, 201, 39);
 		}

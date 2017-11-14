@@ -98,6 +98,7 @@ public class EditarEventoFrame extends JFrame {
 	private JLabel getLblCadastroPesquisador() {
 		if (lblCadastroPesquisador == null) {
 			lblCadastroPesquisador = new JLabel("Editar Evento");
+			lblCadastroPesquisador.setForeground(Color.WHITE);
 			lblCadastroPesquisador.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			lblCadastroPesquisador.setBounds(132, 23, 227, 39);
 		}
@@ -106,6 +107,7 @@ public class EditarEventoFrame extends JFrame {
 	private JLabel getLblNome() {
 		if (lblNome == null) {
 			lblNome = new JLabel("Nome:");
+			lblNome.setForeground(Color.WHITE);
 			lblNome.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblNome.setBounds(77, 84, 74, 33);
 		}
@@ -114,6 +116,7 @@ public class EditarEventoFrame extends JFrame {
 	private JLabel getLblEmail() {
 		if (lblEmail == null) {
 			lblEmail = new JLabel("Respons\u00E1vel:");
+			lblEmail.setForeground(Color.WHITE);
 			lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblEmail.setBounds(77, 111, 103, 33);
 		}
@@ -122,6 +125,7 @@ public class EditarEventoFrame extends JFrame {
 	private JLabel getLblBiografia() {
 		if (lblBiografia == null) {
 			lblBiografia = new JLabel("Data:");
+			lblBiografia.setForeground(Color.WHITE);
 			lblBiografia.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblBiografia.setBounds(77, 135, 74, 33);
 		}
@@ -146,6 +150,7 @@ public class EditarEventoFrame extends JFrame {
 	private JLabel getLblLocal() {
 		if (lblLocal == null) {
 			lblLocal = new JLabel("Local:");
+			lblLocal.setForeground(Color.WHITE);
 			lblLocal.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblLocal.setBounds(77, 160, 74, 33);
 		}

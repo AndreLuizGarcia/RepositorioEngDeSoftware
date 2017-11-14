@@ -12,6 +12,7 @@ import javax.swing.border.EmptyBorder;
 
 import Controller.InputListenerBemVindoFrame;
 import Imagens.JBackground;
+import java.awt.Color;
 
 public class BemVindoFrame extends JFrame {
 
@@ -89,6 +90,7 @@ public class BemVindoFrame extends JFrame {
 	private JLabel getLabel() {
 		if (label == null) {
 			label = new JLabel("Bem-Vindo ao Software de Gerenciamento ICT Lab");
+			label.setForeground(Color.WHITE);
 			label.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			label.setBounds(25, 24, 383, 39);
 		}
@@ -97,6 +99,7 @@ public class BemVindoFrame extends JFrame {
 	private JLabel getLblLogin() {
 		if (lblLogin == null) {
 			lblLogin = new JLabel("Login:");
+			lblLogin.setForeground(Color.WHITE);
 			lblLogin.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblLogin.setBounds(161, 106, 55, 39);
 		}
@@ -105,6 +108,7 @@ public class BemVindoFrame extends JFrame {
 	private JLabel getLblSenha() {
 		if (lblSenha == null) {
 			lblSenha = new JLabel("Senha:");
+			lblSenha.setForeground(Color.WHITE);
 			lblSenha.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblSenha.setBounds(161, 159, 55, 39);
 		}
